@@ -59,6 +59,9 @@ func SetupDatabase() {
 	var gunner User
 	db.Raw("SELECT * FROM users WHERE email = ?", "gunner@email.com").Scan(&gunner)
 
+	var target User
+	db.Model(&User{}).Find(&target, db.Where("email = ?", "gunner@email.com"))
+
 	//-----Gender
 	male := Gender{
 		Gender: "Male",

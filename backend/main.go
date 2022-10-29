@@ -22,10 +22,9 @@ func main() {
 		{
 			// Employee Routes
 			router.GET("/employees", controller.ListEmployees)
-			//router.GET("/employee/:id", controller.ListEmployees)
 			router.GET("/employee/:id", controller.GetEmployee)
-			router.POST("/employees", controller.CreateEmployee)
-			router.PATCH("/employees", controller.UpdateEmployee)
+			router.POST("/employees", controller.CreateEmployees)
+			router.PATCH("/employees", controller.UpdateEmployeeIn)
 			router.DELETE("/employees/:id", controller.DeleteEmployee)
 
 			// gender Routes
@@ -34,6 +33,20 @@ func main() {
 			router.POST("/genders", controller.CreateGender)
 			router.PATCH("/genders", controller.UpdateGender)
 			router.DELETE("/genders/:id", controller.DeleteGender)
+
+			// Position Routes
+			router.GET("/positions", controller.ListPositions)
+			router.GET("/position/:id", controller.GetPosition)
+			router.POST("/positions", controller.CreatePosition)
+			router.PATCH("/positions", controller.UpdatePosition)
+			router.DELETE("/positions/:id", controller.DeletePosition)
+
+			// Position Routes
+			router.GET("/educations", controller.ListEducations)
+			router.GET("/education/:id", controller.GetEducation)
+			router.POST("/educations", controller.CreateEducation)
+			router.PATCH("/educations", controller.UpdateEducation)
+			router.DELETE("/educations/:id", controller.DeleteEducation)
 
 			// provinces Routes
 			router.GET("/provinces", controller.ListProvinces)
@@ -123,7 +136,6 @@ func main() {
 	r.POST("/signup", controller.CreateEmployee)
 	// login User Route
 	r.POST("/login", controller.Login)
-
 	// Run the server go run main.go
 	r.Run("localhost: " + PORT)
 }

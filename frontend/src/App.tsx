@@ -35,6 +35,8 @@ import StockCreate from "./components/StockCreate";
 import Cart from "./components/Cart";
 import Receipts from "./components/Receipts";
 import ReceiptCreate from "./components/ReceiptCreate";
+import EmployeeCreate from "./components/employeeCreate";
+import Employee from "./components/employeeOut";
 import SignIn from "./components/SignIn";
 
 
@@ -93,6 +95,7 @@ const mdTheme = createTheme();
 const menu = [
   { name: "Home", icon: <HomeIcon />, path: "/" },
   { name: "Member", icon: <PeopleIcon />, path: "/members" },
+  { name: "Emaployee", icon: <PeopleIcon />, path: "/employee" },
   { name: "Product", icon: <WidgetsIcon />, path: "/products" },
   { name: "Stock", icon: <WarehouseIcon />, path: "/stocks" },
   { name: "Cart", icon: <AddShoppingCartIcon />, path: "/cart" },  { name: "Receipt Management", icon: <ReceiptIcon />, path: "/receipt/create" },
@@ -214,6 +217,8 @@ function App() {
                 <Route path="/cart" element={<Cart />}/>
                 <Route path="/receipts" element={<Receipts />} />
                 <Route path="/receipt/create" element={<ReceiptCreate />}/>
+                <Route path="/employee" element={<Employee />}/>
+                <Route path="/employee/create" element={<EmployeeCreate />}/>
               </Routes>
             </Container>
           </Box>

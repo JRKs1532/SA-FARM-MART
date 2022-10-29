@@ -7,9 +7,12 @@ import { StockInterface } from "../interfaces/IStock";
 import { ReceiptInterface } from "../interfaces/IReceipt";
 import { OrderInterface } from "../interfaces/IOrder";
 import { CartInterface } from "../interfaces/ICart";
+import { UsersInterface } from "../interfaces/IUser";
+import { SignInUserInterface } from "../interfaces/ISignInUser";
 
 
 const apiUrl = "http://localhost:8080";
+
 
 async function Login(data: SigninInterface) {
   const requestOptions = {
@@ -214,6 +217,26 @@ async function GetPaymenttypes() {
 }
 
 
+
+async function CreateUser(data: UsersInterface) {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  };
+
+  let res = await fetch(`${apiUrl}/signup`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
 // async function GetGenders() {
 //   const requestOptions = {
 //     method: "GET",
@@ -345,6 +368,8 @@ async function GetShelfproduct() {
 
   return res;
 }
+
+
 
 async function CreateEmployee(data: EmployeeInterface) {
   const requestOptions = {
@@ -546,6 +571,70 @@ async function Carts(data: CartInterface) {
   return res;
 }
 
+async function GetPosition() {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  let res = await fetch(`${apiUrl}/positions`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}async function GetEducation() {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  let res = await fetch(`${apiUrl}/educations`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
+
+async function GetGender() {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  let res = await fetch(`${apiUrl}/genders`, requestOptions)
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return false;
+      }
+    });
+
+  return res;
+}
+
 async function Orders(data: OrderInterface) {
   const requestOptions = {
     method: "POST",
@@ -572,8 +661,6 @@ async function Orders(data: OrderInterface) {
 
 export {
   Login, GetEmployeeByEID,
-  GetEmployees, 
-  // GetGenders,
   GetMembers, 
   // GetProvinces, 
   Members,
@@ -584,11 +671,17 @@ export {
   GetPaymenttypes,
   // CreateReceipt,
   Receipts,
+
   CreateEmployee, 
+  GetPosition,
+  CreateUser,
+  GetEducation,
+  GetEmployees, 
+  GetGender,
 
   GetOrders,
   Orders,
-  Carts
+  Carts,
   
 
 };
