@@ -94,8 +94,8 @@ const mdTheme = createTheme();
 
 const menu = [
   { name: "Home", icon: <HomeIcon />, path: "/" },
-  { name: "Member", icon: <PeopleIcon />, path: "/members" },
   { name: "Emaployee", icon: <PeopleIcon />, path: "/employee" },
+  { name: "Member", icon: <PeopleIcon />, path: "/members" },
   { name: "Product", icon: <WidgetsIcon />, path: "/products" },
   { name: "Stock", icon: <WarehouseIcon />, path: "/stocks" },
   { name: "Cart", icon: <AddShoppingCartIcon />, path: "/cart" },  { name: "Receipt Management", icon: <ReceiptIcon />, path: "/receipt/create" },
