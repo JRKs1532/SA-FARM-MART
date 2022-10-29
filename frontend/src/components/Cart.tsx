@@ -113,23 +113,23 @@ function Cart(){
                 body: JSON.stringify(data_order),
         };
 
-            //ต้องใช้ await ไม่งั้นมันจะไปทำคำสั่งต่อไปเลยโดยไม่รอคำสั่งนี้ทำเสร็จ แล้วมันจะแจ้งว่าหา dispensationID ไม่เจอ */
-            if( lastcartID!= lastcartID){ // หากค่าเท่ากันจะไม่บันทึกซ้ำอีกรอบ
-                // ตรวจสอบว่า Medicine ID และ Amount ได้ถูกกรอกร/เลือก หรือไม่ ถ้าไม่ถูกกรอกจะไม่ทำการ fetch และ
-                // พอ fetch dsiepnsation medicine ก็จะแจ้ง error เพราะหา dispensation ไม่เจอ เนื่องจากมันไม่ถุก create จากตรงนี้
-                if(data_order.Quantity && data_order.ProducID){ // หากเป็น null จะเป็นเท็จ
-                    await fetch(`${apiUrl}/carts`, requestOptions_cart)
-                        .then((response) => response.json())
-                        .then((res) => {
-                        if (res.data) {
-                            setlastcartID(cartID)
-                            setSuccess(true)
-                        } else {
-                            setError(true)
-                        }
-                    });
-                }
-            }
+            // //ต้องใช้ await ไม่งั้นมันจะไปทำคำสั่งต่อไปเลยโดยไม่รอคำสั่งนี้ทำเสร็จ แล้วมันจะแจ้งว่าหา dispensationID ไม่เจอ */
+            // if( lastcartID!= lastcartID){ // หากค่าเท่ากันจะไม่บันทึกซ้ำอีกรอบ
+            //     // ตรวจสอบว่า Medicine ID และ Amount ได้ถูกกรอกร/เลือก หรือไม่ ถ้าไม่ถูกกรอกจะไม่ทำการ fetch และ
+            //     // พอ fetch dsiepnsation medicine ก็จะแจ้ง error เพราะหา dispensation ไม่เจอ เนื่องจากมันไม่ถุก create จากตรงนี้
+            //     if(data_order.Quantity && data_order.ProducID){ // หากเป็น null จะเป็นเท็จ
+            //         await fetch(`${apiUrl}/carts`, requestOptions_cart)
+            //             .then((response) => response.json())
+            //             .then((res) => {
+            //             if (res.data) {
+            //                 setlastcartID(cartID)
+            //                 setSuccess(true)
+            //             } else {
+            //                 setError(true)
+            //             }
+            //         });
+            //     }
+            // }
         
 
         fetch(`${apiUrl}/orders`, requestOptions_order)

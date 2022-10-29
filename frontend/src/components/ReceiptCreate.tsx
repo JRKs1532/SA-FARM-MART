@@ -80,14 +80,14 @@ function ReceiptCreate() {
 
   };
 
-  const handleCart = (event: SelectChangeEvent) => {
-    const name = event.target.name as keyof typeof receipts;
-    setReceipts({
-      ...receipts,
-      [name]: event.target.value,
-    });
+  // const handleCart = (event: SelectChangeEvent) => {
+  //   const name = event.target.name as keyof typeof receipts;
+  //   setReceipts({
+  //     ...receipts,
+  //     [name]: event.target.value,
+  //   });
 
-  };
+  // };
 
   const getEmployees = async () => {
     let res = await GetEmployeeByEID();
